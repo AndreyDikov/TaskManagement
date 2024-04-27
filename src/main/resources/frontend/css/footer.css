@@ -1,0 +1,45 @@
+.footer {
+    border-top: 3px solid #9B9B9B;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #575757; /* серый цвет фона */
+    color: white; /* белый цвет текста */
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-content {
+    margin: 0 auto;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 100px 7px; /* увеличение расстояния между ячейками на 10 пикселей */
+}
+
+.footer-button {
+    text-decoration: none;
+    color: white; /* цвет ссылок */
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.footer-button:hover {
+    background-color: #9B9B9B;
+}
+
+.role-block {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}

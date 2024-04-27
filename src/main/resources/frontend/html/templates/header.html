@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="header" th:fragment="header-fragment">
+        <a th:href="@{/}" class="header-button">Профиль</a>
+        <a th:href="@{/upcoming-tasks}" class="header-button">Предстоящие задачи</a>
+        <a th:href="@{/completed-tasks}" class="header-button">Выполненные задачи</a>
+        <a th:href="@{/failed-tasks}" class="header-button">Проваленные задачи</a>
+        <a th:href="@{/users}" class="header-button">Пользователи</a>
+        <a th:href="@{/auth}" class="header-button">Выход</a>
+    </div>
+</body>
+</html>

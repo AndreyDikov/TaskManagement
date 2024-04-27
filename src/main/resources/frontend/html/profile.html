@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link th:href="@{/css/profile.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+    <div th:replace="templates/header :: header-fragment"></div>
+    <table class="profile">
+        <tr>
+            <td rowspan="6"><img class="profile-image" th:src="@{/images/profile.png}"></td>
+            <td class="name">Тони Сопрано</td>
+        </tr>
+        <tr><td><div class="field-name">Логин:</div> admin</td></tr>
+        <tr><td><div class="field-name">Пароль:</div> 123</td></tr>
+        <tr><td><div class="field-name">Должность:</div> Босс</td></tr>
+        <tr><td><div class="field-name">Контактные данные:</div> +19227042631</td></tr>
+        <tr><td class="profile-edit-block"><a th:href="@{/edit}" class="profile-edit">Редактировать профиль</a></td></tr>
+    </table>
+    <div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

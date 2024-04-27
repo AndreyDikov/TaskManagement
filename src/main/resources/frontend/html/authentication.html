@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link th:href="@{/css/authentication.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+<div class="image-container">
+    <img th:src="@{/images/fon-auth.png}">
+</div>
+<form>
+    <input type="text" placeholder="Логин">
+    <input type="password" placeholder="Пароль">
+    <button type="submit">Войти</button>
+</form>
+</body>
+</html>

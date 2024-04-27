@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{/js/task_info_title.js}"></script>
+    <link th:href="@{/css/completed_or_failed_task.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+    <div th:replace="templates/header :: header-fragment"></div>
+    <table border="0" class="task-info">
+        <tr>
+            <td class="task-type-td" rowspan="2">
+                <img class="task-type" th:src="@{/images/completed-task.png}">
+            </td>
+            <td class="field-td">
+                <p class="field">Название:<br></p>
+                <span class="name">Поговорить с кем-нибудь из присяжных по делу дяди Джуниора</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="field-td">
+                <p class="field">Для кого:<br></p>
+                <span class="filed-data">Полли Галтиери(Капо)</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="field-td">
+                <p class="field">Описание задачи:<br></p>
+                <span class="filed-data">
+                    Присяжные должны вынести решение по делу Джуниора, которого судят по закону RICO. Выбери
+                    кого-нибудь из них и запугай, так чтобы не было единогласного решения, либо решение было в
+                    пользу защиты.
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="field-td">
+                <p class="field">Для кого:<br></p>
+                <span class="filed-data">
+                    Дело выполненно, Тон. Присяжный согласился сотрудничать. Суд присяжных не сможет вынести решения.
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="ok-td" colspan="2">
+                <a class="ok" th:href="@{/completed-tasks}">Ок</a>
+            </td>
+        </tr>
+    </table>
+    <div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.profile {
+    border-spacing: 100px 10px;
+    font-family: 'Regular', sans-serif;
+    font-size: 20px;
+    position: fixed; /* устанавливает позицию формы абсолютно относительно ближайшего позиционированного предка */
+    top: 45%; /* устанавливает отступ от верхнего края родительского элемента на 50% */
+    left: 50%; /* устанавливает отступ от левого края родительского элемента на 50% */
+    transform: translate(-50%, -50%); /* перемещает форму на -50% от ее собственной ширины и высоты, чтобы она оказалась точно посередине */
+}
+
+.profile-edit {
+    padding: 10px 20px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
+    font-size: 20px; /* устанавливает размер шрифта 16px */
+    border: none; /* убирает границу у кнопки */
+    background-color: #319CFF; /* устанавливает цвет фона кнопки */
+    color: white; /* устанавливает цвет текста кнопки */
+    cursor: pointer; /* устанавливает вид курсора при наведении на кнопку */
+    transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
+    border-radius: 10px; /* устанавливает скругление углов */
+    text-decoration: none; /* убирает подчеркивание у ссылки */
+    font-family: 'Regular', sans-serif; /* устанавливает шрифт для текста */
+}
+
+.profile-edit:hover {
+    border-radius: 30px; /* изменяет скругление углов кнопки при наведении на нее */
+}
+
+.name {
+    padding-bottom: 15px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.field-name {
+    display: inline-block;
+    color: #747474;
+}
+
+.profile-image {
+    transform: scale(1.5);
+}
+
+.profile-edit-block {
+    padding-top: 55px;
+}

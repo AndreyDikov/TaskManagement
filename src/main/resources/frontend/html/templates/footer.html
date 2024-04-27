@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="footer" th:fragment="footer-fragment">
+        <table class="footer-content">
+            <tr>
+                <td class="footer-menu">
+                    <a th:href="@{/upcoming-tasks}" class="footer-button">Предстоящие задачи</a>
+                </td>
+                <td rowspan="4">
+                    <a th:href="@{/}" class="role-block">
+                        <img th:src="@{/images/admin-logo.png}">
+                        <div>admin</div>
+                    </a>
+                </td>
+            </tr>
+            <tr><td class="footer-menu"><a th:href="@{/completed-tasks}" class="footer-button">Выполненные задачи</a></td></tr>
+            <tr><td class="footer-menu"><a th:href="@{/failed-tasks}" class="footer-button">Проваленные задачи</a></td></tr>
+            <tr><td class="footer-menu"><a th:href="@{/users}" class="footer-button">Пользователи</a></td></tr>
+        </table>
+        <div class="footer-copyright">
+            &copy; 2024. Все права защищены.
+        </div>
+    </div>
+</body>
+</html>

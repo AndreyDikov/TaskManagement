@@ -1,0 +1,116 @@
+.tasks-table {
+    font-family: 'Regular', sans-serif;
+    position: fixed; /* устанавливает позицию формы абсолютно относительно ближайшего позиционированного предка */
+    top: 30%; /* устанавливает отступ от верхнего края родительского элемента на 50% */
+    left: 50%; /* устанавливает отступ от левого края родительского элемента на 50% */
+    transform: translate(-50%, -50%); /* перемещает форму на -50% от ее собственной ширины и высоты, чтобы она оказалась точно посередине */
+}
+
+.add-task-td {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.add-task {
+    text-align: center;
+    padding: 10px 20px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
+    font-size: 20px; /* устанавливает размер шрифта 16px */
+    border: none; /* убирает границу у кнопки */
+    background-color: #319CFF; /* устанавливает цвет фона кнопки */
+    color: white; /* устанавливает цвет текста кнопки */
+    cursor: pointer; /* устанавливает вид курсора при наведении на кнопку */
+    transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
+    border-radius: 10px; /* устанавливает скругление углов */
+    text-decoration: none; /* убирает подчеркивание у ссылки */
+}
+
+.add-task:hover {
+    border-radius: 30px; /* изменяет скругление углов кнопки при наведении на нее */
+}
+
+.tasks-table-header {
+    font-size: 20px;
+    background-color: #D9D9D9;
+}
+
+.data,
+.action {
+    border: none; /* убирает границу у кнопки */
+    text-decoration: none;
+    cursor: pointer; /* устанавливает вид курсора при наведении на кнопку */
+    border-radius: 6px; /* устанавливает скругление углов */
+    text-decoration: none; /* убирает подчеркивание у ссылки */
+    color: black;
+}
+
+.tasks-table-header th,
+.task-for-user .data-td,
+.task-for-me .data-td {
+    border-radius: 6px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.action-td {
+    background-color: white;
+}
+
+.task-for-me
+.action {
+    padding: 15px 20px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
+    background-color: #B9E1BB; /* устанавливает цвет фона кнопки */
+    transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
+}
+
+.task-for-me
+.data-td {
+    background-color: #B9E1BB;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.task-for-me
+.data-td:hover {
+    background-color: #8EB78F;
+}
+
+.task-for-me
+.action:hover {
+    background-color: #8EB78F;
+}
+
+.task-for-user
+.action {
+    padding: 15px 20px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
+    background-color: #E4A2A2; /* устанавливает цвет фона кнопки */
+    transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
+}
+
+.task-for-user
+.data-td {
+    background-color: #E4A2A2;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.task-for-user
+.data-td:hover {
+    background-color: #C08080;
+}
+
+.task-for-user
+.action:hover {
+    background-color: #C08080;
+}
+
+.action:hover {
+    border-radius: 30px; /* изменяет скругление углов кнопки при наведении на нее */
+}
+
+.tasks-table img {
+    padding-right: 7px;
+    vertical-align: -7px; /* или vertical-align: bottom; */
+}

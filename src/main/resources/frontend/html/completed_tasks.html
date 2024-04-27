@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выполненные задачи</title>
+    <link th:href="@{/css/tasks_tables.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+<div th:replace="templates/header :: header-fragment"></div>
+<table class="tasks-table">
+    <tr class="tasks-table-header">
+        <th>Название задачи</th>
+        <th>Для кого</th>
+    </tr>
+    <tr class="task-for-user">
+        <td class="data-td"><a class="data" th:href="@{/completed-tasks/task-info}">Поговорить с кем-нибудь из присяжных по делу дяди Джуниора</a></td>
+        <td class="data-td"><a class="data" th:href="@{/completed-tasks/task-info}">Полли Галтиери (Капо)</a></td>
+    </tr>
+    <tr class="task-for-user">
+        <td class="data-td"><a class="data" href="">Подстроить поджог ресторана Арти</a></td>
+        <td class="data-td"><a class="data" href="">Сильвио Данте (Консильери)</a></td>
+    </tr>
+    <tr class="task-for-me">
+        <td class="data-td"><a class="data" href="">Съездить с Мэдоу в институт</a></td>
+        <td class="data-td"><a class="data" href="">Я</a></td>
+    </tr>
+    <tr class="task-for-user">
+        <td class="data-td"><a class="data" href="">Разобраться с Джимми</a></td>
+        <td class="data-td"><a class="data" href="">Кристофер Молтисанти(Боец)</a></td>
+    </tr>
+</table>
+<div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{/js/profile_editor_title.js}"></script>
+    <link th:href="@{/css/profile_editor.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+<div th:replace="templates/header :: header-fragment"></div>
+<form class="profile-editor">
+    <input type="text" placeholder="Логин">
+    <input type="password" placeholder="Пароль">
+    <input type="text" placeholder="Имя">
+    <input type="text" placeholder="Фамилия">
+    <input type="text" placeholder="Должность">
+    <input type="text" placeholder="Контактные данные">
+    <button type="submit">Сохранить</button>
+</form>
+<div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link th:href="@{/css/users.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+</head>
+<body>
+    <div th:replace="templates/header :: header-fragment"></div>
+    <table class="users-table">
+        <tr>
+            <td class="add-user-td"
+                colspan="5">
+                <a class="add-user" th:href="@{/users/add-user}">Добавить пользователя</a>
+            </td>
+        </tr>
+        <tr class="table-header">
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Должность</th>
+            <th>Контактные данные</th>
+            <th>Действие</th>
+        </tr>
+        <tr class="even">
+            <td class="data-td"><a class="data" href="">Сильвио</a></td>
+            <td class="data-td"><a class="data" href="">Данте</a></td>
+            <td class="data-td"><a class="data" href="">Консильери</a></td>
+            <td class="data-td"><a class="data" href="">+19083494287</a></td>
+            <td class="action-td">
+                <a class="action-delete" href="">
+                    <img th:src="@{/images/delete-user.png}">
+                    Удалить
+                </a>
+            </td>
+        </tr>
+        <tr class="not-even">
+            <td class="data-td"><a class="data" href="">Полли</a></td>
+            <td class="data-td"><a class="data" href="">Галтиери</a></td>
+            <td class="data-td"><a class="data" href="">Капо</a></td>
+            <td class="data-td"><a class="data" href="">+17478247519</a></td>
+            <td class="action-td">
+                <a class="action-delete" href="">
+                    <img th:src="@{/images/delete-user.png}">
+                    Удалить
+                </a>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="data-td"><a class="data" href="">Джимми</a></td>
+            <td class="data-td"><a class="data" href="">Альтиери</a></td>
+            <td class="data-td"><a class="data" href="">Капо</a></td>
+            <td class="data-td"><a class="data" href="">+19011155345</a></td>
+            <td class="action-td">
+                <a class="action-restore" href="">
+                    <img th:src="@{/images/restore-user.png}">
+                    Восстановить
+                </a>
+            </td>
+        </tr>
+        <tr class="not-even">
+            <td class="data-td"><a class="data" href="">Сальваторе</a></td>
+            <td class="data-td"><a class="data" href="">Бонпенсьеро</a></td>
+            <td class="data-td"><a class="data" href="">Капо</a></td>
+            <td class="data-td"><a class="data" href="">+19012319017</a></td>
+            <td class="action-td">
+                <a class="action-delete" href="">
+                    <img th:src="@{/images/delete-user.png}">
+                    Удалить
+                </a>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="data-td"><a class="data" href="">Кристофер</a></td>
+            <td class="data-td"><a class="data" href="">Молтисанти</a></td>
+            <td class="data-td"><a class="data" href="">Боец</a></td>
+            <td class="data-td"><a class="data" href="">+19913477136</a></td>
+            <td class="action-td">
+                <a class="action-delete" href="">
+                    <img th:src="@{/images/delete-user.png}">
+                    Удалить
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

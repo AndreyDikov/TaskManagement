@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Предстоящие задачи</title>
+    <link th:href="@{/css/tasks_tables.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+</head>
+<body>
+    <div th:replace="templates/header :: header-fragment"></div>
+    <table class="tasks-table">
+        <tr>
+            <td class="add-task-td" colspan="4">
+                <a th:href="@{/upcoming-tasks/add-or-update-task}" class="add-task">Добавить задачу</a>
+            </td>
+        <tr>
+        <tr class="tasks-table-header">
+            <th>Название задачи</th>
+            <th>Для кого</th>
+            <th colspan="2">Действия</th>
+        </tr>
+        <tr class="task-for-user">
+            <td class="data-td"><a class="data" th:href="@{/upcoming-tasks/add-or-update-task}">Разобраться с Пусси</a></td>
+            <td class="data-td"><a class="data" th:href="@{/upcoming-tasks/add-or-update-task}">Сильвио Данте(Консильери)</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/done.png}">Выполнено</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/failed.png}">Провалено</a></td>
+        </tr>
+        <tr class="task-for-user">
+            <td class="data-td"><a class="data" href="">Разобраться с Пусси</a></td>
+            <td class="data-td"><a class="data" href="">Полли Галтиери(Капо)</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/done.png}">Выполнено</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/failed.png}">Провалено</a></td>
+        </tr>
+        <tr class="task-for-me">
+            <td class="data-td"><a class="data" href="">Навестить дядю Джуниора</a></td>
+            <td class="data-td"><a class="data" href="">Я</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/done.png}">Выполнено</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/failed.png}">Провалено</a></td>
+        </tr>
+        <tr class="task-for-user">
+            <td class="data-td"><a class="data" href="">Переговоры с семьей Лупертацци</a></td>
+            <td class="data-td"><a class="data" href="">Кристофер Молтисанти(Боец)</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/done.png}">Выполнено</a></td>
+            <td class="action-td"><a class="action" href=""><img th:src="@{/images/failed.png}">Провалено</a></td>
+        </tr>
+    </table>
+    <div th:replace="templates/footer :: footer-fragment"></div>
+</body>
+</html>

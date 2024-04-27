@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-info {
+    border-spacing: 70px 0px;
+    font-size: 20px;
+    font-family: 'Regular', sans-serif;
+    margin-top: 8%;
+    margin-bottom: 15%;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.field {
+    margin-bottom: 8px;
+    color: #4B4B4B;
+}
+
+.field-td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 500px;
+}
+
+.task-type {
+    transform: scale(3);
+}
+
+.ok-td {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.ok {
+    padding: 10px 60px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
+    font-size: 20px; /* устанавливает размер шрифта 16px */
+    border: none; /* убирает границу у кнопки */
+    background-color: #319CFF; /* устанавливает цвет фона кнопки */
+    color: white; /* устанавливает цвет текста кнопки */
+    cursor: pointer; /* устанавливает вид курсора при наведении на кнопку */
+    transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
+    border-radius: 10px; /* устанавливает скругление углов */
+    text-decoration: none; /* убирает подчеркивание у ссылки */
+}
+
+.ok:hover {
+    border-radius: 30px; /* устанавливает скругление углов при наведении на кнопку */
+}
