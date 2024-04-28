@@ -25,63 +25,21 @@
             <th>Контактные данные</th>
             <th>Действие</th>
         </tr>
-        <tr class="even">
-            <td class="data-td"><a class="data" href="">Сильвио</a></td>
-            <td class="data-td"><a class="data" href="">Данте</a></td>
-            <td class="data-td"><a class="data" href="">Консильери</a></td>
-            <td class="data-td"><a class="data" href="">+19083494287</a></td>
+        <tr th:each="user, stat : ${users}" th:class="${stat.even} ? 'even' : 'not-even'">
+            <td class="data-td"><a class="data" href="" th:text="${user.name}"></a></td>
+            <td class="data-td"><a class="data" href="" th:text="${user.surname}"></a></td>
+            <td class="data-td"><a class="data" href="" th:text="${user.jobTitle}"></a></td>
+            <td class="data-td"><a class="data" href="" th:text="${user.contacts}"></a></td>
             <td class="action-td">
-                <a class="action-delete" href="">
+                <a class="action-delete" href=""
+                   th:if="${user.status == T(ru.backend.enums.UserStatus).ACTIVE}">
                     <img th:src="@{/images/delete-user.png}">
                     Удалить
                 </a>
-            </td>
-        </tr>
-        <tr class="not-even">
-            <td class="data-td"><a class="data" href="">Полли</a></td>
-            <td class="data-td"><a class="data" href="">Галтиери</a></td>
-            <td class="data-td"><a class="data" href="">Капо</a></td>
-            <td class="data-td"><a class="data" href="">+17478247519</a></td>
-            <td class="action-td">
-                <a class="action-delete" href="">
-                    <img th:src="@{/images/delete-user.png}">
-                    Удалить
-                </a>
-            </td>
-        </tr>
-        <tr class="even">
-            <td class="data-td"><a class="data" href="">Джимми</a></td>
-            <td class="data-td"><a class="data" href="">Альтиери</a></td>
-            <td class="data-td"><a class="data" href="">Капо</a></td>
-            <td class="data-td"><a class="data" href="">+19011155345</a></td>
-            <td class="action-td">
-                <a class="action-restore" href="">
+                <a class="action-restore" href=""
+                   th:if="${user.status == T(ru.backend.enums.UserStatus).DELETED}">
                     <img th:src="@{/images/restore-user.png}">
                     Восстановить
-                </a>
-            </td>
-        </tr>
-        <tr class="not-even">
-            <td class="data-td"><a class="data" href="">Сальваторе</a></td>
-            <td class="data-td"><a class="data" href="">Бонпенсьеро</a></td>
-            <td class="data-td"><a class="data" href="">Капо</a></td>
-            <td class="data-td"><a class="data" href="">+19012319017</a></td>
-            <td class="action-td">
-                <a class="action-delete" href="">
-                    <img th:src="@{/images/delete-user.png}">
-                    Удалить
-                </a>
-            </td>
-        </tr>
-        <tr class="even">
-            <td class="data-td"><a class="data" href="">Кристофер</a></td>
-            <td class="data-td"><a class="data" href="">Молтисанти</a></td>
-            <td class="data-td"><a class="data" href="">Боец</a></td>
-            <td class="data-td"><a class="data" href="">+19913477136</a></td>
-            <td class="action-td">
-                <a class="action-delete" href="">
-                    <img th:src="@{/images/delete-user.png}">
-                    Удалить
                 </a>
             </td>
         </tr>
