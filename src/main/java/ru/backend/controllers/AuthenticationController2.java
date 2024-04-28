@@ -1,16 +1,13 @@
 package ru.backend.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/auth")
-public class AuthenticationController {
-
-    @Autowired
-    public AuthenticationController() {
-    }
+@AllArgsConstructor
+public class AuthenticationController2 {
 
     @RequestMapping
     public String getAuthenticationPage() {

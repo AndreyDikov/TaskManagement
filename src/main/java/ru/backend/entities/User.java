@@ -2,8 +2,10 @@ package ru.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import ru.backend.enums.Role;
 import ru.backend.enums.UserStatus;
+import ru.backend.security.user.Role;
+import ru.backend.security.user.SecurityUser;
+
 import java.util.List;
 
 @Getter
@@ -17,18 +19,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    private String login;
-
-    private String password;
-
     private String name;
-
     private String surname;
-
     private String jobTitle;
-
     private String contacts;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "security_id")
+    private SecurityUser securityUser;
 
     @OneToMany(mappedBy = "fromUser")
     private List<Task> assignedTasks;
@@ -36,9 +34,5 @@ public class User {
     @OneToMany(mappedBy = "toUser")
     private List<Task> createdTasks;
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
 }
