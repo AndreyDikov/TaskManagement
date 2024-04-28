@@ -1,54 +1,47 @@
 package ru.backend.services;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.backend.entities.User;
-import ru.backend.enums.Role;
-import ru.backend.enums.UserStatus;
 import ru.backend.repositories.UserRepository;
-import ru.backend.security.auth.UserDTO;
 import ru.backend.security.user.Role;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
-    private final JdbcTemplate jdbcTemplate;
-    private final UserRepository securityUserRepository;
-
-    @Autowired
-    public UserService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    public void saveOrUpdateUser(UserDTO userDTO) {
-
-//        securityUserRepository.(userDTO);
-    }
+    private final UserRepository userRepository;
 
     public List<User> getUsers() {
-        List<User> users = new ArrayList<>();
-        jdbcTemplate.query("SELECT * FROM users WHERE role = 'USER'", (ResultSet rs, int rowNum) -> {
-            User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setLogin(rs.getString("login"));
-            user.setPassword(rs.getString("password"));
-            user.setName(rs.getString("name"));
-            user.setSurname(rs.getString("surname"));
-            user.setJobTitle(rs.getString("job_title"));
-            user.setContacts(rs.getString("contacts"));
-            user.setStatus(rs.getString("status").equals("ACTIVE")
-                    ? UserStatus.ACTIVE
-                    : UserStatus.DELETED);
-            user.setRole(Role.USER);
-            users.add(user);
-            return user;
-        });
-        return users;
+        return userRepository.findByRole(Role.USER);
+    }
+
+    public Optional<User> getUserById(long id) {
+        return userRepository.findById(id);
+    }
+
+    public void updateUser(User user, Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User userEntity = userOptional.get();
+            userEntity.getSecurityUser().setPassword(user.getSecurityUser().getPassword());
+            userEntity.getSecurityUser().setLogin(user.getSecurityUser().getLogin());
+            userEntity.setName(user.getName());
+            userEntity.setSurname(user.getSurname());
+            userEntity.setJobTitle(user.getJobTitle());
+            userEntity.setContacts(user.getContacts());
+            userRepository.save(userEntity);
+        }
+    }
+
+    public void save(User user) {
+        user.getSecurityUser().setRoles(Set.of(Role.USER));
+        user.getSecurityUser().setActive(true);
+        userRepository.save(user);
     }
 }

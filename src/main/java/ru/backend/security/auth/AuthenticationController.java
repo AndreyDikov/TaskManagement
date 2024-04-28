@@ -18,12 +18,12 @@ public class AuthenticationController {
 
     @GetMapping("/signup-page")
     public String registration(Model model) {
-        model.addAttribute("registrationForm", new UserDTO());
+//        model.addAttribute("registrationForm", new RegistrationFormDTO()); // todo подумать, че не так
         return "auth/signup_page";
     }
 
     @PostMapping("/register")
-    public String registration(UserDTO request, Model model) {
+    public String registration(RegistrationFormDTO request, Model model) {
         service.register(request);
         model.addAttribute("authenticationRequest", new AuthenticationRequest());
         return "redirect:/api/v1/auth/login-page";

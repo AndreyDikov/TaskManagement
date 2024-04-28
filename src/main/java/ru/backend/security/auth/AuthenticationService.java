@@ -29,13 +29,13 @@ public class AuthenticationService {
      * @param request объект запроса с данными нового пользователя
      * @return объект ответа со сгенерированным JWT токеном
      */
-    public AuthenticationResponse register(UserDTO request) {
+    public AuthenticationResponse register(RegistrationFormDTO request) {
         // Создание нового пользователя на основе данных из запроса
         SecurityUser securityUser = SecurityUser.builder()
 //                .firstname(request.getFirstname())
 //                .lastname(request.getLastname())
 //                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
+//                .password(passwordEncoder.encode(request.getPassword()))
                 .roles(Set.of(Role.USER))
                 .build();
 

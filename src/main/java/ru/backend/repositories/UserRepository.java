@@ -8,14 +8,7 @@ import ru.backend.security.user.Role;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-
-//    @Query("""
-//            select u
-//            from User u
-//            join u.securityUser su
-//            where :role member of su.roles""")
-//    List<User> findByRole(Role role);
+public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("""
             from User u

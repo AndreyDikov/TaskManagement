@@ -2,8 +2,8 @@ insert into security_users (login, password, active)
 values ('admin', '123', true)
      , ('sill', '123', true)
      , ('paulie', '123', true)
-     , ('jimmy', '123', true)
-     , ('pussy', '123', true)
+     , ('jimmy', '123', false)
+     , ('pus', '123', true)
      , ('kriss', '123', true);
 
 insert into user_role

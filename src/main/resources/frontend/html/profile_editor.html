@@ -11,13 +11,19 @@
 </head>
 <body>
 <div th:replace="templates/header :: header-fragment"></div>
-<form class="profile-editor" th:action="@{/profile}">
-    <input type="text" placeholder="Логин">
-    <input type="password" placeholder="Пароль">
-    <input type="text" placeholder="Имя">
-    <input type="text" placeholder="Фамилия">
-    <input type="text" placeholder="Должность">
-    <input type="text" placeholder="Контактные данные">
+<form class="profile-editor" th:action="@{/users/create-or-update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <input th:field="*{securityUser.login}" th:value="${user.securityUser.login}"
+       type="text" placeholder="Логин">
+    <input type="password" th:field="*{securityUser.password}"
+           placeholder="Пароль">
+    <input type="text" th:field="*{name}" th:value="user.name"
+           placeholder="Имя">
+    <input type="text" th:field="*{surname}" th:value="user.surname"
+           placeholder="Фамилия">
+    <input type="text" th:field="*{jobTitle}" th:value="user.jobTitle"
+           placeholder="Должность">
+    <input type="text" th:field="*{contacts}" th:value="user.contacts"
+           placeholder="Контактные данные">
     <button type="submit">Сохранить</button>
 </form>
 <div th:replace="templates/footer :: footer-fragment"></div>

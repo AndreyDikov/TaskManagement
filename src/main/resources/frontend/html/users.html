@@ -12,6 +12,7 @@
 <body>
     <div th:replace="templates/header :: header-fragment"></div>
     <table class="users-table">
+        <thead>
         <tr>
             <td class="add-user-td"
                 colspan="5">
@@ -25,24 +26,28 @@
             <th>Контактные данные</th>
             <th>Действие</th>
         </tr>
-        <tr th:each="user, stat : ${users}" th:class="${stat.even} ? 'even' : 'not-even'">
-            <td class="data-td"><a class="data" href="" th:text="${user.name}"></a></td>
-            <td class="data-td"><a class="data" href="" th:text="${user.surname}"></a></td>
-            <td class="data-td"><a class="data" href="" th:text="${user.jobTitle}"></a></td>
-            <td class="data-td"><a class="data" href="" th:text="${user.contacts}"></a></td>
+        </thead>
+        <tbody>
+        <tr class="even" th:each="user : ${users}">
+            <td class="data-td">
+                <a class="data" th:text="${user.name}"
+                   th:href="@{/users/update/{id}(id=${user.id})}"></a>
+            </td>
+            <td class="data-td" th:text="${user.surname}"></td>
+            <td class="data-td" th:text="${user.jobTitle}"></td>
+            <td class="data-td" th:text="${user.contacts}"></td>
             <td class="action-td">
-                <a class="action-delete" href=""
-                   th:if="${user.status == T(ru.backend.enums.UserStatus).ACTIVE}">
+                <a th:if="${user.securityUser.active}" class="action-delete" href="">
                     <img th:src="@{/images/delete-user.png}">
                     Удалить
                 </a>
-                <a class="action-restore" href=""
-                   th:if="${user.status == T(ru.backend.enums.UserStatus).DELETED}">
+                <a th:if="${!user.securityUser.active}" class="action-restore" href="">
                     <img th:src="@{/images/restore-user.png}">
                     Восстановить
                 </a>
             </td>
         </tr>
+        </tbody>
     </table>
     <div th:replace="templates/footer :: footer-fragment"></div>
 </body>

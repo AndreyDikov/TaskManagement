@@ -24,15 +24,14 @@ public class SecurityUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
     private String login;
     private String password;
     private boolean active;
 
-
     @OneToOne(mappedBy = "securityUser",
             cascade = CascadeType.ALL)
-    private User squadUser;
+    private User user;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

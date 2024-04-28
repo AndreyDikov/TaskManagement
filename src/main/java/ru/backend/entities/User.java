@@ -2,15 +2,13 @@ package ru.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import ru.backend.enums.UserStatus;
-import ru.backend.security.user.Role;
 import ru.backend.security.user.SecurityUser;
 
 import java.util.List;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"securityUser", "assignedTasks", "createdTasks"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
