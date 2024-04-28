@@ -17,6 +17,7 @@ import ru.backend.services.UserService;
 @AllArgsConstructor
 public class ProfileController {
 
+    private final UserDetailsService userDetailsService;
     private final UserService userService;
 
     @GetMapping
