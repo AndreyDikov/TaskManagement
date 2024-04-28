@@ -33,6 +33,7 @@ public class UsersController {
         user.setSecurityUser(securityUser);
         securityUser.setUser(user);
         model.addAttribute("user", user);
+        model.addAttribute("isAdmin", true);
         return "profile_editor";
     }
 
@@ -42,6 +43,7 @@ public class UsersController {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             model.addAttribute("user", user);
+            model.addAttribute("isAdmin", true);
         } else {
             throw new RuntimeException("User not found");
         }

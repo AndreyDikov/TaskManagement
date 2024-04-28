@@ -37,7 +37,8 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .requestMatchers("/auth/**", "/resources/**", "/css/**", "/js/**", "/images/**")
                 .permitAll()
-                .requestMatchers("/", "/upcoming-tasks/**", "/completed-tasks/**", "/failed-tasks**")
+                .requestMatchers("/", "/upcoming-tasks/**", "/completed-tasks/**",
+                        "/failed-tasks/**", "/edit-profile/**", "/update-profile/**")
                 .hasAnyAuthority("USER", "ADMIN")
                 .requestMatchers("/**")
                 .hasAnyAuthority("ADMIN")

@@ -7,11 +7,13 @@
     <link th:href="@{/css/profile_editor.css}" rel="stylesheet">
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <link th:href="@{/css/footer.css}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}" />
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}"/>
 </head>
 <body>
 <div th:replace="templates/header :: header-fragment"></div>
-<form class="profile-editor" th:action="@{/users/create-or-update/{id}(id=${user.id})}" th:object="${user}" method="post">
+<!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}"-->
+<form class="profile-editor" th:attr="action=${isAdmin ? ('/users/create-or-update/' + user.id) : '/update-profile'}"
+                             th:object="${user}" method="post">
     <input th:field="*{securityUser.login}" th:value="${user.securityUser.login}"
        type="text" placeholder="Логин">
     <input type="password" th:field="*{securityUser.password}"
