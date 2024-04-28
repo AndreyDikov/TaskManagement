@@ -43,18 +43,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         final Cookie[] cookies = request.getCookies();
         String jwt = null;
-        String userEmail = null;
+        String login = null;
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     jwt = cookie.getValue();
-                    userEmail = jwtService.extractUsername(jwt);
+                    login = jwtService.extractUsername(jwt);
                 }
 
-                if (userEmail != null && SecurityContextHolder
+                if (login != null && SecurityContextHolder
                         .getContext().getAuthentication() == null) {
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(login);
                     if (jwtService.isTokenValid(jwt, userDetails)) {
                         UsernamePasswordAuthenticationToken authToken =
                                 new UsernamePasswordAuthenticationToken(

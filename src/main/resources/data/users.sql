@@ -1,10 +1,10 @@
 insert into security_users (login, password, active)
-values ('admin', '123', true)
-     , ('sill', '123', true)
-     , ('paulie', '123', true)
-     , ('jimmy', '123', false)
-     , ('pus', '123', true)
-     , ('kriss', '123', true);
+values ('admin', '$2a$10$JtRcZrjN631R71Q41j6Tau0FwCyTZ7tJhW/.6p21ZP2KkXtD.GvZW', true)
+     , ('sill', '$2a$10$f6LWRbofnE5Bs012V4hK9.D3wIAoEHiJME5b8jUtfTb9/08jUa5K6', true)
+     , ('paulie', '$2a$10$fmjPEDZoT/KGYygNVJjyGemdxd3F/JtcWiPHObO2uPdkzL1rws19q', true)
+     , ('jimmy', '$2a$10$gFOeptzcYdt1M5qKRBTVROwOafSf6s1hWMk/kHGF56F8xNoETLhoq', false)
+     , ('pus', '$2a$10$6N2J4do5QLavMKfViYRY7eMYvLzvZNvulEHgEg7nPiDThv1wVHdom', true)
+     , ('kriss', '$2a$10$eGOtEQTIFzFFV1RVR3sHtuMhg6lRmQE1ACvLMF6vRA327QNkryZqC', true);
 
 insert into user_role
 values (1, 'ADMIN'),

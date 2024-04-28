@@ -10,8 +10,8 @@
 <div class="image-container">
     <img th:src="@{/images/fon-auth.png}">
 </div>
-<form th:action="@{/api/v1/auth/authenticate}" method="post" th:object="${authenticationRequest}">
-    <input type="text" placeholder="Логин" th:field="*{email}">
+<form th:action="@{/auth/authenticate}" method="post" th:object="${authenticationRequest}">
+    <input type="text" placeholder="Логин" th:field="*{login}">
     <input type="password" placeholder="Пароль" th:field="*{password}">
     <button type="submit">Войти</button>
 </form>

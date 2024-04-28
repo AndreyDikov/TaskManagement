@@ -10,24 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 
     private final AuthenticationService service;
-
-    @GetMapping("/signup-page")
-    public String registration(Model model) {
-//        model.addAttribute("registrationForm", new RegistrationFormDTO()); // todo подумать, че не так
-        return "auth/signup_page";
-    }
-
-    @PostMapping("/register")
-    public String registration(RegistrationFormDTO request, Model model) {
-        service.register(request);
-        model.addAttribute("authenticationRequest", new AuthenticationRequest());
-        return "redirect:/api/v1/auth/login-page";
-    }
 
     @GetMapping("/login-page")
     public String getLoginPage(HttpServletResponse httpServletResponse, Model model) {
@@ -43,6 +30,6 @@ public class AuthenticationController {
         Cookie cookie = new Cookie("token", authenticationResponse.getToken());
         cookie.setPath("/");
         httpServletResponse.addCookie(cookie);
-        return "redirect:/api/v1/index-controller/index";
+        return "redirect:/";
     }
 }

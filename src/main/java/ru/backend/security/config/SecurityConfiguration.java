@@ -35,19 +35,18 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests()
-                .requestMatchers("/api/v1/auth/**", "/api/v1/auth/**",
-                        "/api/v1/greeting-controller/**", "/users/**")
+                .requestMatchers("/auth/**")
                 .permitAll()
-                .requestMatchers("/api/v1/demo-controller/with-auth", "/api/v1/index-controller/**")
+                .requestMatchers("/users/add-user")
+                .hasAnyAuthority("ADMIN")
+                .requestMatchers("/users/**")
                 .hasAnyAuthority("USER")
-                .requestMatchers("/api/v1/demo-controller/**")
-                .permitAll()
                 .and().formLogin(form -> form
-                        .loginPage("/api/v1/auth/login-page")
-                        .failureUrl("/api/v1/auth/login-page"))
+                        .loginPage("/auth/login-page")
+                        .failureUrl("/auth/login-page"))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/api/v1/auth/login-page")
+                        .logoutSuccessUrl("/auth/login-page")
                         .deleteCookies("token"))
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
