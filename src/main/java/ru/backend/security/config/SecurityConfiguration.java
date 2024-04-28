@@ -35,12 +35,12 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests()
-                .requestMatchers("/auth/**")
+                .requestMatchers("/auth/**", "/resources/**", "/css/**", "/js/**", "/images/**")
                 .permitAll()
-                .requestMatchers("/users/add-user")
+                .requestMatchers("/", "/upcoming-tasks/**", "/completed-tasks/**", "/failed-tasks**")
+                .hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/**")
                 .hasAnyAuthority("ADMIN")
-                .requestMatchers("/users/**")
-                .hasAnyAuthority("USER")
                 .and().formLogin(form -> form
                         .loginPage("/auth/login-page")
                         .failureUrl("/auth/login-page"))
