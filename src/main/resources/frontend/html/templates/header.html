@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
     <div class="header" th:fragment="header-fragment">
         <a th:href="@{/}" class="header-button">Профиль</a>
         <a th:href="@{/upcoming-tasks}" class="header-button">Предстоящие задачи</a>
         <a th:href="@{/completed-tasks}" class="header-button">Выполненные задачи</a>
         <a th:href="@{/failed-tasks}" class="header-button">Проваленные задачи</a>
-        <a th:href="@{/users}" class="header-button">Пользователи</a>
+        <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/users}" class="header-button">Пользователи</a>
+        <a sec:authorize="hasAnyAuthority('USER')" class="header-button">Эту кнопку видит только Юзер, но не АДМИН!!!</a>
         <a th:href="@{/logout}" class="header-button">Выход</a>
     </div>
 </body>

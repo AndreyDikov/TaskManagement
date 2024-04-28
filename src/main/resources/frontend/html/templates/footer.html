@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
     <div class="footer" th:fragment="footer-fragment">
         <table class="footer-content">
@@ -17,7 +18,13 @@
             </tr>
             <tr><td class="footer-menu"><a th:href="@{/completed-tasks}" class="footer-button">Выполненные задачи</a></td></tr>
             <tr><td class="footer-menu"><a th:href="@{/failed-tasks}" class="footer-button">Проваленные задачи</a></td></tr>
-            <tr><td class="footer-menu"><a th:href="@{/users}" class="footer-button">Пользователи</a></td></tr>
+            <tr>
+                <td class="footer-menu">
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <a th:href="@{/users}" class="footer-button">Пользователи</a>
+                    </div>
+                </td>
+            </tr>
         </table>
         <div class="footer-copyright">
             &copy; 2024. Все права защищены.
