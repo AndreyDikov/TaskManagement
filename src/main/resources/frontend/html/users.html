@@ -28,20 +28,33 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="even" th:each="user : ${users}">
+        <tr th:each="user, stat : ${users}" th:class="${stat.even} ? 'even' : 'not-even'">
             <td class="data-td">
                 <a class="data" th:text="${user.name}"
                    th:href="@{/users/update/{id}(id=${user.id})}"></a>
             </td>
-            <td class="data-td" th:text="${user.surname}"></td>
-            <td class="data-td" th:text="${user.jobTitle}"></td>
-            <td class="data-td" th:text="${user.contacts}"></td>
+            <td class="data-td">
+                <a class="data" th:text="${user.surname}"
+                   th:href="@{/users/update/{id}(id=${user.id})}"></a>
+            </td>
+            <td class="data-td">
+                <a class="data" th:text="${user.jobTitle}"
+                   th:href="@{/users/update/{id}(id=${user.id})}"></a>
+            </td>
+            <td class="data-td">
+                <a class="data" th:text="${user.contacts}"
+                   th:href="@{/users/update/{id}(id=${user.id})}"></a>
+            </td>
             <td class="action-td">
-                <a th:if="${user.securityUser.active}" class="action-delete" href="">
+                <a th:if="${user.securityUser.active}"
+                   class="action-delete"
+                   th:href="@{/users/update-status/{id}(id=${user.id})}">
                     <img th:src="@{/images/delete-user.png}">
                     Удалить
                 </a>
-                <a th:if="${!user.securityUser.active}" class="action-restore" href="">
+                <a th:if="${!user.securityUser.active}"
+                   class="action-restore"
+                   th:href="@{/users/update-status/{id}(id=${user.id})}">
                     <img th:src="@{/images/restore-user.png}">
                     Восстановить
                 </a>

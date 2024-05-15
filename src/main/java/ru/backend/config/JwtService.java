@@ -1,4 +1,4 @@
-package ru.backend.security.config;
+package ru.backend.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

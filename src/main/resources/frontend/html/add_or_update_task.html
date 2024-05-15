@@ -11,9 +11,9 @@
 </head>
 <body>
     <div th:replace="templates/header :: header-fragment"></div>
-    <form>
+    <form th:action="@{/add-task}" th:object="${task}" method="post">
         <label>Название задачи:</label><br>
-        <input type="text"><br>
+        <input type="text" th:field="*{name}"><br>
         <label>Для кого:</label><br>
         <select name="user">
             <option>Я</option>

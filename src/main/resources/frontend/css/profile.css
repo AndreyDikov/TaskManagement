@@ -36,6 +36,10 @@
     color: #747474;
 }
 
+.field-value {
+    display: inline-block;
+}
+
 .profile-image {
     transform: scale(1.5);
 }

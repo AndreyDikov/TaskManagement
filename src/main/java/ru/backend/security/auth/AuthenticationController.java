@@ -18,8 +18,9 @@ public class AuthenticationController {
 
     @GetMapping("/login-page")
     public String getLoginPage(HttpServletResponse httpServletResponse, Model model) {
-        model.addAttribute("authenticationRequest", new AuthenticationRequest());
-        return "auth/login_page";
+        model.addAttribute("authenticationRequest", AuthenticationRequest.builder()
+                .build());
+        return "/login_page";
     }
 
     @PostMapping("/authenticate")

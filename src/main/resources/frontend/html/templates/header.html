@@ -9,7 +9,6 @@
         <a th:href="@{/completed-tasks}" class="header-button">Выполненные задачи</a>
         <a th:href="@{/failed-tasks}" class="header-button">Проваленные задачи</a>
         <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/users}" class="header-button">Пользователи</a>
-        <a sec:authorize="hasAnyAuthority('USER')" class="header-button">Эту кнопку видит только Юзер, но не АДМИН!!!</a>
         <a th:href="@{/logout}" class="header-button">Выход</a>
     </div>
 </body>

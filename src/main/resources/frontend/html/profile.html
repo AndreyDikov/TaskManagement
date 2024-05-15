@@ -11,16 +11,34 @@
 </head>
 <body>
     <div th:replace="templates/header :: header-fragment"></div>
-    <table class="profile">
+    <table class="profile" th:object="${user}">
         <tr>
             <td rowspan="6"><img class="profile-image" th:src="@{/images/profile.png}"></td>
-            <td class="name">Тони Сопрано</td>
+            <td class="name" th:text="*{name} + ' ' + *{surname}"></td>
         </tr>
-        <tr><td><div class="field-name">Логин:</div> admin</td></tr>
-        <tr><td><div class="field-name">Пароль:</div> 123</td></tr>
-        <tr><td><div class="field-name">Должность:</div> Босс</td></tr>
-        <tr><td><div class="field-name">Контактные данные:</div> +19227042631</td></tr>
-        <tr><td class="profile-edit-block"><a th:href="@{/edit-profile}" class="profile-edit">Редактировать профиль</a></td></tr>
+        <tr>
+            <td>
+                <div class="field-name" th:text="'Логин: '"></div>
+                <div class="field-value" th:text="*{securityUser.login}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="field-name" th:text="'Должность: '"></div>
+                <div class="field-value" th:text="*{jobTitle}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="field-name" th:text="'Контактные данные: '"></div>
+                <div class="field-value" th:text="*{contacts}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="profile-edit-block">
+                <a th:href="@{/edit-profile}" class="profile-edit">Редактировать профиль</a>
+            </td>
+        </tr>
     </table>
     <div th:replace="templates/footer :: footer-fragment"></div>
 </body>

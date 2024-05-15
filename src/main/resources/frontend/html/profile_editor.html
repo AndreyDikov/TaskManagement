@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <script th:src="@{/js/profile_editor_title.js}"></script>
@@ -11,7 +12,6 @@
 </head>
 <body>
 <div th:replace="templates/header :: header-fragment"></div>
-<!--th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}"-->
 <form class="profile-editor" th:attr="action=${isAdmin ? ('/users/create-or-update/' + user.id) : '/update-profile'}"
                              th:object="${user}" method="post">
     <input th:field="*{securityUser.login}" th:value="${user.securityUser.login}"
@@ -22,7 +22,7 @@
            placeholder="Имя">
     <input type="text" th:field="*{surname}" th:value="user.surname"
            placeholder="Фамилия">
-    <input type="text" th:field="*{jobTitle}" th:value="user.jobTitle"
+    <input type="text" sec:authorize="hasAnyAuthority('ADMIN')" th:field="*{jobTitle}" th:value="user.jobTitle"
            placeholder="Должность">
     <input type="text" th:field="*{contacts}" th:value="user.contacts"
            placeholder="Контактные данные">

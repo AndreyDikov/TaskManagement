@@ -1,6 +1,7 @@
 package ru.backend.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,12 @@ public class UsersController {
             userService.save(user);
         }
 
+        return "redirect:/users";
+    }
+
+    @PostMapping("/update-status/{id}")
+    public String updateUserStatus(@PathVariable("id") Long id, Model model) {
+        userService.updateUserStatus(id);
         return "redirect:/users";
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.backend.security.config.JwtService;
+import ru.backend.config.JwtService;
 import ru.backend.security.user.Role;
 import ru.backend.security.user.SecurityUser;
 import ru.backend.security.user.SecurityUserRepository;
@@ -59,7 +59,7 @@ public class AuthenticationService {
      * @return объект ответа со сгенерированными JWT токенами доступа и обновления
      */
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        /*Аутентификация пользователя на основе email и пароля из запроса.
+        /*Аутентификация пользователя на основе login и пароля из запроса.
          * authenticationManager выполняет всю работу для аутентификации пользователя.
          * В случае, если имя пользователя или пароль неверны, будет выброшено исключение.*/
         authenticationManager.authenticate(

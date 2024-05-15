@@ -9,10 +9,11 @@
                 <td class="footer-menu">
                     <a th:href="@{/upcoming-tasks}" class="footer-button">Предстоящие задачи</a>
                 </td>
-                <td rowspan="4">
+                <td class="footer-profile" rowspan="4">
                     <a th:href="@{/}" class="role-block">
-                        <img th:src="@{/images/admin-logo.png}">
-                        <div>admin</div>
+                        <img sec:authorize="hasAnyAuthority('ADMIN')" th:src="@{/images/admin-logo.png}">
+                        <img sec:authorize="hasAnyAuthority('USER')" th:src="@{/images/user-logo.png}">
+                        <div th:text="${currentUser.login}"></div>
                     </a>
                 </td>
             </tr>

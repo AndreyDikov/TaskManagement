@@ -63,4 +63,13 @@ public class UserService {
     public User getUser(UserDetails userDetails) {
         return ((SecurityUser) userDetails).getUser();
     }
+
+    public void updateUserStatus(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.getSecurityUser().setActive(!user.getSecurityUser().isActive());
+            userRepository.save(user);
+        }
+    }
 }
