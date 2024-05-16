@@ -41,10 +41,12 @@ public class UserService {
     }
 
     public void fillUserEntity(User userEntity, User user) {
-        userEntity.getSecurityUser()
-                .setPassword(passwordEncoder
-                        .encode(user.getSecurityUser().getPassword()));
-        userEntity.getSecurityUser().setLogin(user.getSecurityUser().getLogin());
+        if (user.getSecurityUser() != null) {
+            userEntity.getSecurityUser()
+                    .setPassword(passwordEncoder
+                            .encode(user.getSecurityUser().getPassword()));
+            userEntity.getSecurityUser().setLogin(user.getSecurityUser().getLogin());
+        }
         userEntity.setName(user.getName());
         userEntity.setSurname(user.getSurname());
         userEntity.setJobTitle(user.getJobTitle());
