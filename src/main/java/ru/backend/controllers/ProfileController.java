@@ -35,6 +35,7 @@ public class ProfileController {
         model.addAttribute("user", user);
         model.addAttribute("isAdmin",
                 user.getSecurityUser().getRoles().contains("ADMIN"));
+        model.addAttribute("isAdd", false);
 
         return "profile_editor";
     }

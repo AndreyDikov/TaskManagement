@@ -1,25 +1,45 @@
-form {
-    border-radius: 20px; /* устанавливает скругление углов */
-    padding: 20px 30px; /* устанавливает отступы сверху и снизу в 20px и по горизонтали - автоматически (чтобы выровнять по центру) */
-    background-color: #575757; /* устанавливает цвет фона формы */
-    position: fixed; /* устанавливает позицию формы абсолютно относительно ближайшего позиционированного предка */
-    top: 45%; /* устанавливает отступ от верхнего края родительского элемента на 50% */
-    left: 50%; /* устанавливает отступ от левого края родительского элемента на 50% */
-    transform: translate(-50%, -50%); /* перемещает форму на -50% от ее собственной ширины и высоты, чтобы она оказалась точно посередине */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-form input {
-    margin: 20px auto; /* устанавливает отступы сверху и снизу в 30px и по горизонтали - автоматический (чтобы выровнять по центру) */
+form {
+    font-family: 'Regular', sans-serif;
+    border-radius: 20px; /* устанавливает скругление углов */
+    padding: 20px 40px; /* устанавливает отступы сверху и снизу в 20px и по горизонтали - автоматически (чтобы выровнять по центру) */
+    background-color: #575757; /* устанавливает цвет фона формы */
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-editor {
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+.password-editor {
+    margin-top: 2%;
+    margin-bottom: 15%;
+}
+
+label {
+    padding-bottom: 15px;
+    padding-left: 10px;
+    font-size: 22px;
+    color: white;
 }
 
 form button {
-    margin: 60px 60px auto; /* устанавливает отступы сверху и снизу в 40px и по горизонтали - автоматический (чтобы выровнять по центру) */
+    margin: 30px 40px auto; /* устанавливает отступы сверху и снизу в 40px и по горизонтали - автоматический (чтобы выровнять по центру) */
     padding: 10px 40px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 40px */
     font-size: 20px; /* устанавливает размер шрифта 16px */
     border: none; /* убирает границу у кнопки */
     background-color: #319CFF; /* устанавливает цвет фона кнопки */
     color: #fff; /* устанавливает цвет текста кнопки */
     cursor: pointer; /* устанавливает вид курсора при наведении на кнопку */
+    border-radius: 10px;
     transition: border-radius 0.6s; /* добавляет анимацию изменения скругления углов при наведении на кнопку */
 }
 
@@ -27,23 +47,39 @@ form button:hover {
     border-radius: 30px; /* изменяет скругление углов кнопки при наведении на нее */
 }
 
-form button {
-    display: block; /* устанавливает блочный тип отображения элемента */
-    border-radius: 10px; /* устанавливает скругление углов */
-}
-
-form input {
-    display: block; /* устанавливает блочный тип отображения элемента */
+form input,
+form select,
+form textarea {
     border-radius: 30px; /* устанавливает скругление углов */
-}
-
-form input[type="text"],
-form input[type="password"] {
     padding: 10px 28px; /* устанавливает внутренние отступы сверху и снизу по 10px, слева и справа по 25px */
+    margin-top: 20px;
     font-size: 20px; /* устанавливает размер шрифта 16px */
-    border: none; /* устанавливает внешнюю границу определенного стиля */
+    border: none;
+    margin-left: 0;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
+}
+
+select {
+    background-color: #fff;
+    appearance: none;
+}
+
+select option {
+    background-color: #fff; /* устанавливает цвет фона пункта выпадающего списка */
+    color: #000; /* устанавливает цвет текста пункта выпадающего списка */
+}
+
+select option:hover {
+    background-color: #319CFF; /* устанавливает цвет фона пункта выпадающего списка при наведении на него */
+    color: #fff; /* устанавливает цвет текста пункта выпадающего списка при наведении на него */
+}
+
+.eye-icon {
+    cursor: pointer;
+    margin-left: -25px; /* настройка отступа между полем пароля и иконкой глаза */
 }

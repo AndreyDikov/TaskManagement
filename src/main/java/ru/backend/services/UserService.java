@@ -41,7 +41,7 @@ public class UserService {
     }
 
     public void fillUserEntity(User userEntity, User user) {
-        userEntity.getSecurityUser() // todo если пароль пустой или равен предыдущему, то не обновлять пароль
+        userEntity.getSecurityUser()
                 .setPassword(passwordEncoder
                         .encode(user.getSecurityUser().getPassword()));
         userEntity.getSecurityUser().setLogin(user.getSecurityUser().getLogin());

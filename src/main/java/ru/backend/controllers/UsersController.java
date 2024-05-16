@@ -35,16 +35,18 @@ public class UsersController {
         securityUser.setUser(user);
         model.addAttribute("user", user);
         model.addAttribute("isAdmin", true);
+        model.addAttribute("isAdd", true);
         return "profile_editor";
     }
 
     @GetMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") Long id, Model model) {
+    public String updateUser(@PathVariable Long id, Model model) {
         Optional<User> userOptional = userService.getUserById(id);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             model.addAttribute("user", user);
             model.addAttribute("isAdmin", true);
+            model.addAttribute("isAdd", false);
         } else {
             throw new RuntimeException("User not found");
         }
@@ -53,7 +55,7 @@ public class UsersController {
     }
 
     @PostMapping("/create-or-update/{id}")
-    public String updateUser(@PathVariable("id") Long id, User user) {
+    public String createOrUpdateUser(@PathVariable Long id, User user) {
         if (id != 0) {
             userService.updateUser(user, id);
         } else {
@@ -63,8 +65,8 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @PostMapping("/update-status/{id}")
-    public String updateUserStatus(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/update-status/{id}")
+    public String updateUserStatus(@PathVariable Long id) {
         userService.updateUserStatus(id);
         return "redirect:/users";
     }

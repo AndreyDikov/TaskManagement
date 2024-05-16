@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <script th:src="@{/js/profile_editor_title.js}"></script>
+    <script th:src="@{/js/profile_editor_password.js}"></script>
     <link th:href="@{/css/profile_editor.css}" rel="stylesheet">
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <link th:href="@{/css/footer.css}" rel="stylesheet">
@@ -13,11 +14,17 @@
 <body>
 <div th:replace="templates/header :: header-fragment"></div>
 <form class="profile-editor" th:attr="action=${isAdmin ? ('/users/create-or-update/' + user.id) : '/update-profile'}"
-                             th:object="${user}" method="post">
-    <input th:field="*{securityUser.login}" th:value="${user.securityUser.login}"
-       type="text" placeholder="Логин">
-    <input type="password" th:field="*{securityUser.password}"
-           placeholder="Пароль">
+      th:object="${user}" method="post">
+    <!--<label>Редактирование профиля</label>-->
+    <div th:if="${!isAdmin || isAdd}">
+        <input th:field="*{securityUser.login}" th:value="${user.securityUser.login}"
+               type="text" placeholder="Логин">
+        <div>
+            <input type="password" th:field="*{securityUser.password}"
+                   id="passwordField" placeholder="Пароль">
+            <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
+        </div>
+    </div>
     <input type="text" th:field="*{name}" th:value="user.name"
            placeholder="Имя">
     <input type="text" th:field="*{surname}" th:value="user.surname"

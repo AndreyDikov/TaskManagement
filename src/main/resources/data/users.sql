@@ -7,12 +7,12 @@ values ('admin', '$2a$10$JtRcZrjN631R71Q41j6Tau0FwCyTZ7tJhW/.6p21ZP2KkXtD.GvZW',
      , ('kriss', '$2a$10$eGOtEQTIFzFFV1RVR3sHtuMhg6lRmQE1ACvLMF6vRA327QNkryZqC', true);
 
 insert into user_role
-values (1, 'ADMIN'),
-       (2, 'USER'),
-       (3, 'USER'),
-       (4, 'USER'),
-       (5, 'USER'),
-       (6, 'USER');
+values (1, 'ADMIN')
+     , (2, 'USER')
+     , (3, 'USER')
+     , (4, 'USER')
+     , (5, 'USER')
+     , (6, 'USER');
 
 insert into users (name, surname, job_title, contacts, security_id)
 values ('Тони', 'Сопрано', 'Босс', '+19227042631', 1)
