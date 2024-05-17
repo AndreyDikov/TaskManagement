@@ -43,9 +43,6 @@ public class ProfileController {
     @PostMapping("/update-profile")
     public String updateProfile(@AuthenticationPrincipal UserDetails userDetails, User user) {
         User userProfile = userService.getUser(userDetails);
-        if (user.getJobTitle() == null) {
-            user.setJobTitle(userProfile.getJobTitle());
-        }
         userService.updateUser(user, userProfile.getId());
         return "redirect:/";
     }

@@ -40,17 +40,21 @@ public class UserService {
         }
     }
 
-    public void fillUserEntity(User userEntity, User user) {
-        if (user.getSecurityUser() != null) {
-            userEntity.getSecurityUser()
-                    .setPassword(passwordEncoder
-                            .encode(user.getSecurityUser().getPassword()));
-            userEntity.getSecurityUser().setLogin(user.getSecurityUser().getLogin());
+    public void fillUserEntity(User user, User newUserData) {
+        if (newUserData.getSecurityUser() != null) {
+            if (newUserData.getSecurityUser().getPassword() != null) {
+                user.getSecurityUser()
+                        .setPassword(passwordEncoder
+                                .encode(newUserData.getSecurityUser().getPassword()));
+            }
+            if (newUserData.getSecurityUser().getLogin() != null) {
+                user.getSecurityUser().setLogin(newUserData.getSecurityUser().getLogin());
+            }
         }
-        userEntity.setName(user.getName());
-        userEntity.setSurname(user.getSurname());
-        userEntity.setJobTitle(user.getJobTitle());
-        userEntity.setContacts(user.getContacts());
+        if (user.getName() != null) {user.setName(newUserData.getName());}
+        if (user.getSurname() != null) {user.setSurname(newUserData.getSurname());}
+        if (user.getJobTitle() != null) {user.setJobTitle(newUserData.getJobTitle());}
+        if (user.getContacts() != null) {user.setContacts(newUserData.getContacts());}
     }
 
     public void save(User user) {
