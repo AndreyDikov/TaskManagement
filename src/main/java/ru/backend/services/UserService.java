@@ -51,10 +51,10 @@ public class UserService {
                 user.getSecurityUser().setLogin(newUserData.getSecurityUser().getLogin());
             }
         }
-        if (user.getName() != null) {user.setName(newUserData.getName());}
-        if (user.getSurname() != null) {user.setSurname(newUserData.getSurname());}
-        if (user.getJobTitle() != null) {user.setJobTitle(newUserData.getJobTitle());}
-        if (user.getContacts() != null) {user.setContacts(newUserData.getContacts());}
+        if (newUserData.getName() != null) {user.setName(newUserData.getName());}
+        if (newUserData.getSurname() != null) {user.setSurname(newUserData.getSurname());}
+        if (newUserData.getJobTitle() != null) {user.setJobTitle(newUserData.getJobTitle());}
+        if (newUserData.getContacts() != null) {user.setContacts(newUserData.getContacts());}
     }
 
     public void save(User user) {
