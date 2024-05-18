@@ -1,5 +1,7 @@
 package ru.backend.services;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,6 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.backend.entities.User;
 import ru.backend.repositories.UserRepository;
+import ru.backend.security.auth.AuthenticationRequest;
+import ru.backend.security.auth.AuthenticationResponse;
+import ru.backend.security.auth.AuthenticationService;
 import ru.backend.security.user.Role;
 import ru.backend.security.user.SecurityUser;
 
@@ -21,10 +26,13 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationService authenticationService;
 
     public List<User> getUsers() {
         return userRepository.findByRole(Role.USER);
     }
+
+    public List<User> getAllUsers() {return userRepository.findAll();}
 
     public Optional<User> getUserById(long id) {
         return userRepository.findById(id);

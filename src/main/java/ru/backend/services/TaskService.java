@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import ru.backend.entities.Task;
+import ru.backend.entities.User;
+import ru.backend.enums.TaskStatus;
 import ru.backend.repositories.TaskRepository;
 import ru.backend.security.user.SecurityUser;
 
@@ -19,7 +21,9 @@ public class TaskService {
         return taskRepository.findByUserId(((SecurityUser) userDetails).getId());
     }
 
-    public void saveTask(Task task) {
+    public void saveTask(User fromUser, Task task) {
+        task.setFromUser(fromUser);
+        task.setStatus(TaskStatus.UPCOMING);
         taskRepository.save(task);
     }
 }

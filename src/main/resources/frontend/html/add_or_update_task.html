@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Добавить задачу</title>
@@ -11,22 +12,21 @@
 </head>
 <body>
     <div th:replace="templates/header :: header-fragment"></div>
-    <form th:action="@{/add-task}" th:object="${task}" method="post">
+    <form th:action="@{/upcoming-tasks/add-task}" th:object="${task}" method="post">
         <label>Название задачи:</label><br>
         <input type="text" th:field="*{name}"><br>
         <label>Для кого:</label><br>
-        <select name="user">
-            <option>Я</option>
-            <option>Сильвио Данте(Консильери)</option>
-            <option>Полли Галтиери(Капо)</option>
-            <option>Джимми Альтиери(Капо)</option>
-            <option>Сальваторе Бонпенсьеро(Капо)</option>
-            <option>Кристофер Молтисанти(Боец)</option>
+        <select sec:authorize="hasAnyAuthority('ADMIN')"
+                th:field="*{toUser}">
+            <option th:each="user : ${users}"
+                    th:value="${user}"
+                    th:text="${user.id == currentUser.id ? 'Я' : user.name + ' ' + user.surname + ' (' + user.jobTitle + ')'}">
+            </option>
         </select><br>
         <label>Описание задачи:</label><br>
-        <textarea cols="30" rows="3"></textarea><br>
+        <textarea cols="30" rows="3" th:field="*{description}"></textarea><br>
         <label>Комментарий:</label><br>
-        <textarea cols="30" rows="3"></textarea><br>
+        <textarea cols="30" rows="3" th:field="*{report}"></textarea><br>
         <button type="submit">Сохранить</button>
     </form>
     <div th:replace="templates/footer :: footer-fragment"></div>
