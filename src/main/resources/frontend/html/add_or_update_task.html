@@ -19,7 +19,7 @@
         <select sec:authorize="hasAnyAuthority('ADMIN')"
                 th:field="*{toUser}">
             <option th:each="user : ${users}"
-                    th:value="${user}"
+                    th:value="${user.id}"
                     th:text="${user.id == currentUser.id ? 'Я' : user.name + ' ' + user.surname + ' (' + user.jobTitle + ')'}">
             </option>
         </select><br>
