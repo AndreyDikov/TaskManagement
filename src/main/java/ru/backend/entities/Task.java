@@ -2,7 +2,6 @@ package ru.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import ru.backend.annotations.Hint;
 import ru.backend.enums.TaskStatus;
 
 @Getter
@@ -15,7 +14,6 @@ import ru.backend.enums.TaskStatus;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Hint("Элементарные типы использовать предпочтительнее")
     private long id;
 
     private String name;

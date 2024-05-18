@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.backend.annotations.Hint;
 import ru.backend.entities.User;
 
 import java.util.Collection;
@@ -21,7 +20,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Entity
 @Table(name = "security_users")
-@Hint("Элементарные типы для полей классов предпочтительнее")
 public class SecurityUser implements UserDetails {
 
     @Id

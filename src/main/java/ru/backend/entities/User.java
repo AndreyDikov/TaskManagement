@@ -2,7 +2,6 @@ package ru.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import ru.backend.annotations.Hint;
 import ru.backend.security.user.SecurityUser;
 
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Hint("Элементарные типы использовать предпочтительнее")
     private long id;
     private String name;
 
