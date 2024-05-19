@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Проваленные задачи</title>
@@ -14,23 +15,29 @@
 <table class="tasks-table">
     <tr class="tasks-table-header">
         <th>Название задачи</th>
-        <th>Для кого</th>
+        <th sec:authorize="hasAuthority('USER')">От кого</th>
+        <th sec:authorize="hasAuthority('ADMIN')">Для кого</th>
     </tr>
-    <tr class="task-for-user">
-        <td class="data-td"><a class="data" th:href="@{/failed-tasks/task-info}">Поговорить с кем-нибудь из присяжных по делу дяди Джуниора</a></td>
-        <td class="data-td"><a class="data" th:href="@{/failed-tasks/task-info}">Полли Галтиери (Капо)</a></td>
-    </tr>
-    <tr class="task-for-user">
-        <td class="data-td"><a class="data" href="">Подстроить поджог ресторана Арти</a></td>
-        <td class="data-td"><a class="data" href="">Сильвио Данте (Консильери)</a></td>
-    </tr>
-    <tr class="task-for-me">
-        <td class="data-td"><a class="data" href="">Съездить с Мэдоу в институт</a></td>
-        <td class="data-td"><a class="data" href="">Я</a></td>
-    </tr>
-    <tr class="task-for-user">
-        <td class="data-td"><a class="data" href="">Разобраться с Джимми</a></td>
-        <td class="data-td"><a class="data" href="">Кристофер Молтисанти(Боец)</a></td>
+    <tr th:each="task : ${failedTasks}"
+        th:class="${(isAdmin && currentUser.id == task.toUser.id)
+                || (!isAdmin && currentUser.id == task.fromUser.id)} ? 'task-for-me' : 'task-for-user'">
+        <td class="data-td">
+            <a class="data"
+               th:href="@{/upcoming-tasks/add-or-update-task}"
+               th:text="${task.name}"></a>
+        </td>
+        <td class="data-td">
+            <a class="data"
+               sec:authorize="hasAuthority('ADMIN')"
+               th:href="@{/upcoming-tasks/add-or-update-task}"
+               th:text="${currentUser.id == task.toUser.id ? 'Я'
+                        : (task.toUser.name + ' ' + task.toUser.surname + '(' + task.toUser.jobTitle + ')')}"></a>
+            <a class="data"
+               sec:authorize="hasAuthority('USER')"
+               th:href="@{/upcoming-tasks/add-or-update-task}"
+               th:text="${currentUser.id == task.fromUser.id ? 'Я'
+                        : (task.fromUser.name + ' ' + task.fromUser.surname + '(' + task.fromUser.jobTitle + ')')}"></a>
+        </td>
     </tr>
 </table>
 <div th:replace="templates/footer :: footer-fragment"></div>

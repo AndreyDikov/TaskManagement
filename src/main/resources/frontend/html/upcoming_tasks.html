@@ -24,7 +24,9 @@
             <th sec:authorize="hasAuthority('ADMIN')">Для кого</th>
             <th colspan="2">Действия</th>
         </tr>
-        <tr th:each="task : ${upcomingTasks}" class="task-for-me">
+        <tr th:each="task : ${upcomingTasks}"
+            th:class="${(isAdmin && currentUser.id == task.toUser.id)
+                || (!isAdmin && currentUser.id == task.fromUser.id)} ? 'task-for-me' : 'task-for-user'">
             <td class="data-td">
                 <a class="data"
                    th:href="@{/upcoming-tasks/add-or-update-task}"
@@ -32,11 +34,26 @@
             </td>
             <td class="data-td">
                 <a class="data"
+                   sec:authorize="hasAuthority('ADMIN')"
                    th:href="@{/upcoming-tasks/add-or-update-task}"
-                   th:text="${task.toUser.name} + ' ' + ${task.toUser.surname} + '(' + ${task.toUser.jobTitle} + ')'"></a>
+                   th:text="${currentUser.id == task.toUser.id ? 'Я'
+                        : (task.toUser.name + ' ' + task.toUser.surname + '(' + task.toUser.jobTitle + ')')}"></a>
+                <a class="data"
+                   sec:authorize="hasAuthority('USER')"
+                   th:href="@{/upcoming-tasks/add-or-update-task}"
+                   th:text="${currentUser.id == task.fromUser.id ? 'Я'
+                        : (task.fromUser.name + ' ' + task.fromUser.surname + '(' + task.fromUser.jobTitle + ')')}"></a>
             </td>
-            <td class="action-td"><a class="action" href=""><img th:src="@{/images/done.png}">Выполнено</a></td>
-            <td class="action-td"><a class="action" href=""><img th:src="@{/images/failed.png}">Провалено</a></td>
+            <td class="action-td">
+                <a class="action" th:href="@{/upcoming-tasks/update-to-complete/{id}(id=${task.id})}">
+                    <img th:src="@{/images/done.png}">Выполнено
+                </a>
+            </td>
+            <td class="action-td">
+                <a class="action" th:href="@{/upcoming-tasks/update-to-failed/{id}(id=${task.id})}">
+                    <img th:src="@{/images/failed.png}">Провалено
+                </a>
+            </td>
         </tr>
     </table>
     <div th:replace="templates/footer :: footer-fragment"></div>

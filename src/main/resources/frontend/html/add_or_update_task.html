@@ -15,10 +15,11 @@
     <form th:action="@{/upcoming-tasks/add-task}" th:object="${task}" method="post">
         <label>Название задачи:</label><br>
         <input type="text" th:field="*{name}"><br>
-        <label>Для кого:</label><br>
+        <label sec:authorize="hasAnyAuthority('ADMIN')">Для кого:</label><br>
         <select sec:authorize="hasAnyAuthority('ADMIN')"
                 th:field="*{toUser}">
             <option th:each="user : ${users}"
+                    th:if="${user.securityUser.isAccountNonLocked()}"
                     th:value="${user.id}"
                     th:text="${user.id == currentUser.id ? 'Я' : user.name + ' ' + user.surname + ' (' + user.jobTitle + ')'}">
             </option>
