@@ -12,7 +12,9 @@
 </head>
 <body>
     <div th:replace="templates/header :: header-fragment"></div>
-    <form th:action="@{/upcoming-tasks/add-task}" th:object="${task}" method="post">
+    <form th:attr="action=${isUpdate ? ('/upcoming-tasks/update-old-task/' + user.id) : '/upcoming-tasks/add-task'}"
+          th:object="${task}"
+          method="post">
         <label>Название задачи:</label><br>
         <input type="text" th:field="*{name}"><br>
         <label sec:authorize="hasAnyAuthority('ADMIN')">Для кого:</label><br>

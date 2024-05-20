@@ -29,18 +29,18 @@
                 || (!isAdmin && currentUser.id == task.fromUser.id)} ? 'task-for-me' : 'task-for-user'">
             <td class="data-td">
                 <a class="data"
-                   th:href="@{/upcoming-tasks/add-or-update-task}"
+                   th:href="@{/upcoming-tasks/update-task/{id}(id=${task.id})}"
                    th:text="${task.name}"></a>
             </td>
             <td class="data-td">
                 <a class="data"
                    sec:authorize="hasAuthority('ADMIN')"
-                   th:href="@{/upcoming-tasks/add-or-update-task}"
+                   th:href="@{/upcoming-tasks/update-task/{id}(id=${task.id})}"
                    th:text="${currentUser.id == task.toUser.id ? 'Я'
                         : (task.toUser.name + ' ' + task.toUser.surname + '(' + task.toUser.jobTitle + ')')}"></a>
                 <a class="data"
                    sec:authorize="hasAuthority('USER')"
-                   th:href="@{/upcoming-tasks/add-or-update-task}"
+                   th:href="@{/upcoming-tasks/update-task/{id}(id=${task.id})}"
                    th:text="${currentUser.id == task.fromUser.id ? 'Я'
                         : (task.fromUser.name + ' ' + task.fromUser.surname + '(' + task.fromUser.jobTitle + ')')}"></a>
             </td>

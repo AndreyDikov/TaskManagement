@@ -47,4 +47,14 @@ public class TaskService {
             taskRepository.save(task);
         }
     }
+
+    public Task getTaskById(UserDetails user, Long id) {
+        List<Task> tasks = getUpcomingTasks(user);
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                return task;
+            }
+        }
+        return null;
+    }
 }

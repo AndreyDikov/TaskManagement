@@ -41,7 +41,8 @@ public class UpcomingTasksController {
     }
 
     @GetMapping("/create-task")
-    public String createTask(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String createTask(@AuthenticationPrincipal UserDetails userDetails,
+                             Model model) {
         model.addAttribute("task", new Task());
         model.addAttribute("users", userService.getAllUsers());
         return "add_or_update_task";
@@ -53,6 +54,18 @@ public class UpcomingTasksController {
         User user = ((SecurityUser) userDetails).getUser();
         taskService.saveTask(user, task);
         return "redirect:/upcoming-tasks";
+    }
+
+
+
+    @GetMapping("update-task/{id}")
+    public String updateTask(@AuthenticationPrincipal UserDetails userDetails,
+                             @PathVariable("id") Long taskId,
+                             Model model) {
+        model.addAttribute("task", taskService.getTaskById(userDetails, taskId));
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("isUpdate", true);
+        return "add_or_update_task";
     }
 
     @GetMapping("update-to-complete/{id}")
